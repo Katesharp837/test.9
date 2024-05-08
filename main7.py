@@ -1,32 +1,42 @@
 
-print("Calculyator")
-while True:
-
+def main(input_str: str) -> str:
+    result = str
     try:
-        print()
-        select_operation = input("Введите операцию:( +,-,/ *):")
+        # Разбиваем входную строку на числа и оператор
+        parts = input_str.split()
+        a = int(parts[0])
+        op = parts[1]
+        b = int(parts[2])
+
+        # Выполняем операцию в зависимости от оператора
+        if op == '+':
+            result = a + b
+        elif op == '-':
+            result = a - b
+        elif op == '*':
+            result = a * b
+        elif op == '/':
+            # Проверка деления на ноль
+            if b == 0:
+                return "Ошибка: деление на ноль"
+            result = a / b
+        else:
+            return "Ошибка: неподдерживаемая операция"
+
+        # Возвращаем результат в виде строки
+        return str(result)
+    except Exception as e:
+        return "Ошибка: " + str(e)
+
+# Пример использования
+if __name__ == "__main__":
+    input_str = input("Введите выражение (например, '2 + 3'): ")
+    print(main(input_str))
 
 
 
-        a = int(input("Введите первое число"))
-        b = int(input("Введите второе число"))
-
-        if select_operation =="/" and b == 0:
-            print("Второе число не может быть равно нулю (деление на ноль)")
-            continue
 
 
-    except:
-        print("ошибка введите число")
-        print("ощибка введите операцию")
-    else:
-        if select_operation == "+":
-            print(a + b)
-        elif select_operation == "-":
-            print(a - b)
-        elif select_operation == "*":
-            print(a * b)
-        elif select_operation == "/":
-            print(a / b)
+
 
 
